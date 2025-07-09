@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(cookieParser());
 // Allow requests from frontend
 app.use(cors({
-  origin: "http://localhost:5173", // 👈 your frontend URL
+  origin: "https://chatbot-saurabh-singh.vercel.app", // 👈 your frontend URL
   credentials: true
 })); 
 
