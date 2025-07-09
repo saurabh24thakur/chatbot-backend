@@ -9,7 +9,7 @@ import bcrypt from "bcryptjs";
 
 export const signUp = async (req, res) => {
     try {
-      const { username, email, password } = req.body;
+      const { name, email, password } = req.body;
       console.log("Signup hit ✅"); // Debug log
     console.log("Body:", req.body); // Debug input
 
@@ -26,7 +26,7 @@ export const signUp = async (req, res) => {
       const hashedPassword = await bcrypt.hash(password, 10);
   
       const user = await User.create({
-        username,
+        name,
         email,
         password: hashedPassword,
       });
