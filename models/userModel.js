@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const userSchema=mongoose.Schema({
-    name:{
+    username:{
         type:String,
         required:true
     },
@@ -14,12 +14,8 @@ const userSchema=mongoose.Schema({
         type:String,
         required:true
     },
-    assistantName:{
-        type:String,
-    },
-    assistantImage:{
-        type:String,
-    },
+    
+    
     history:[
         {type:String}
     ]
