@@ -22,11 +22,21 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(cookieParser());
 // Allow requests from frontend
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://chatbot-saurabh-singh.vercel.app"
+];
+
 app.use(cors({
-  origin: "https://chatbot-saurabh-singh.vercel.app",
-  // origin:"http://localhost:5173", // 👈 your frontend URL
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true
-})); 
+}));
 
 
 // Routes
