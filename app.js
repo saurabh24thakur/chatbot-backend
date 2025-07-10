@@ -23,11 +23,11 @@ app.use(express.json());
 app.use(cookieParser());
 // Allow requests from frontend
 const allowedOrigins = [
-  "http://localhost:5173",
-  "https://chatbot-saurabh-singh.vercel.app"
+  "https://chatbot-saurabh-singh.vercel.app", // your frontend
+  "http://localhost:5173" // for development
 ];
 
-app.use(cors({
+const corsOptions = {
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
@@ -35,9 +35,10 @@ app.use(cors({
       callback(new Error("Not allowed by CORS"));
     }
   },
-  credentials: true
-}));
+  credentials: true // <-- VERY IMPORTANT
+};
 
+app.use(cors(corsOptions));
 
 // Routes
 app.use("/api/auth", authRouter);
