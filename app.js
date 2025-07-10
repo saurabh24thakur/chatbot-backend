@@ -24,7 +24,7 @@ app.use(cookieParser());
 // Allow requests from frontend
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://chatbot-saurabh-singh.vercel.app", // your frontend domain
+  "https://chatbot-saurabh-singh.vercel.app", 
 ];
 
 app.use(cors({
